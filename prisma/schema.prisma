@@ -16,10 +16,10 @@ datasource db {
 
 model User {
   id Int @id @default(autoincrement())
-  email String @unique
+  email String @unique @db.VarChar(200)
   hash String
-  firstName String?
-  lastName String?
+  firstName String? @db.VarChar(100)
+  lastName String? @db.VarChar(100)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   bookmarks Bookmark[]
@@ -29,9 +29,9 @@ model User {
 
 model Bookmark {
   id Int @id @default(autoincrement())
-  title String
-  description String?
-  link String
+  title String @db.VarChar(200)
+  description String? @db.VarChar(800)
+  link String  @db.VarChar(200)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId Int
